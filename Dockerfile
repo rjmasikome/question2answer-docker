@@ -38,6 +38,11 @@ RUN git clone https://github.com/amiyasahu/Donut.git && \
     cp -r Donut/qa-theme/Donut-theme /var/www/html/qa-theme/ && \
     rm -rf Donut
 
+# Adding Bahasa Indonesia
+RUN git clone https://github.com/rjmasikome/q2a-indonesian-translation.git && \
+    cp -r q2a-indonesian-translation/id /var/www/html/qa-lang/ && \
+    rm -rf q2a-indonesian-translation
+
 ADD entrypoint.sh /entrypoint.sh
 RUN chown root:root /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
