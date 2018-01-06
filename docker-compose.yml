@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+
+  question2answer:
+    container_name: q2a
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rjmasikome/q2a
+    ports:
+      - "8080:80"
+    links:
+      - db:mysql
+    environment:
+      QUESTION2ANSWER_DB_USER: admin
+      QUESTION2ANSWER_DB_PASSWORD: 100%Secure
+      QUESTION2ANSWER_DB_NAME: q2a
+
+  db:
+    image: mariadb
+    container_name: q2a_db
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 100%Secure
+      MYSQL_DATABASE: q2a
+      MYSQL_ROOT_PASSWORD: 100%SuperSecure
+    volumes:
+      - ./mysql:/var/lib/mysql
